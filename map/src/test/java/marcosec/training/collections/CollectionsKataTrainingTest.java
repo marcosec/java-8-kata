@@ -71,4 +71,19 @@ public class CollectionsKataTrainingTest
 
 		assertThat(training.sum(input), equalTo(60));
 	}
+
+	@Test
+	public void shouldGetNamesOfPersonUnderAge18()
+	{
+		Person oldest = new Person("Alice",40);
+		Person mid = new Person("Bob",10);
+		Person youngest = new Person("Charlie",2);
+
+		CollectionsKataTraining training = new CollectionsKataTraining();
+
+		List<Person> input = Arrays.asList(oldest,mid,youngest);
+
+		assertThat(training.getLegalPersonsName(input), hasItems("Bob","Charlie"));
+
+	}
 }

@@ -43,4 +43,12 @@ public class CollectionsKataTraining
 		return input.stream()
 				.reduce(0, Integer::sum);
 	}
+
+	public List<String> getLegalPersonsName(List<Person> input)
+	{
+		return input.stream()
+				.filter(person -> person.getAge() < 18)
+				.map(Person::getName)
+				.collect(toList());
+	}
 }
