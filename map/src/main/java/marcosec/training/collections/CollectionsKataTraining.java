@@ -1,7 +1,10 @@
 package marcosec.training.collections;
 
+import marcosec.training.data.Person;
+
 import static java.util.stream.Collectors.toList;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class CollectionsKataTraining
@@ -26,5 +29,18 @@ public class CollectionsKataTraining
 		return input.stream()
 				.flatMap(list -> list.stream())
 				.collect(toList());
+	}
+
+	public Person oldestPerson(List<Person> input)
+	{
+		return input.stream()
+				.max(Comparator.comparing(Person::getAge))
+				.get();
+	}
+
+	public Integer sum(List<Integer> input)
+	{
+		return input.stream()
+				.reduce(0, Integer::sum);
 	}
 }

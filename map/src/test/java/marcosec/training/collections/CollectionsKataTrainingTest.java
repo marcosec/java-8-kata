@@ -1,5 +1,6 @@
 package marcosec.training.collections;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
@@ -7,6 +8,8 @@ import static org.junit.Assert.assertThat;
 import java.util.Arrays;
 import java.util.List;
 
+import marcosec.training.data.Person;
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
 public class CollectionsKataTrainingTest
@@ -43,5 +46,29 @@ public class CollectionsKataTrainingTest
 		List<List<String>> input = Arrays.asList(Arrays.asList("verylong"), Arrays.asList("foo", "fair"));
 
 		assertThat(training.flat(input), hasItems("verylong","foo","fair"));
+	}
+
+	@Test
+	public void shouldGetOldestPerson()
+	{
+		Person oldest = new Person("Alice",40);
+		Person mid = new Person("Bob",10);
+		Person youngest = new Person("Charlie",2);
+
+		CollectionsKataTraining training = new CollectionsKataTraining();
+
+		List<Person> input = Arrays.asList(oldest,mid,youngest);
+
+		assertThat(training.oldestPerson(input), equalTo(oldest));
+	}
+
+	@Test
+	public void shouldSumItemsOfAList()
+	{
+		CollectionsKataTraining training = new CollectionsKataTraining();
+
+		List<Integer> input = Arrays.asList(10,20,30);
+
+		assertThat(training.sum(input), equalTo(60));
 	}
 }
