@@ -20,4 +20,11 @@ public class CollectionsKataTraining
 				.filter(item -> item.length() > 4)
 				.collect(toList());
 	}
+
+	public List<String> flat(List<List<String>> input)
+	{
+		return input.stream()
+				.flatMap(list -> list.stream())
+				.collect(toList());
+	}
 }

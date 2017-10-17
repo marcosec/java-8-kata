@@ -34,4 +34,14 @@ public class CollectionsKataTrainingTest
 		assertThat(training.filterItemsLength(input), not(hasItems("foo", "fair")));
 
 	}
+
+	@Test
+	public void shouldFlattenACollection()
+	{
+		CollectionsKataTraining training = new CollectionsKataTraining();
+
+		List<List<String>> input = Arrays.asList(Arrays.asList("verylong"), Arrays.asList("foo", "fair"));
+
+		assertThat(training.flat(input), hasItems("verylong","foo","fair"));
+	}
 }
