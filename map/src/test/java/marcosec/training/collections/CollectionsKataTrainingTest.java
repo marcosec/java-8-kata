@@ -1,4 +1,4 @@
-package marcosec.training.map;
+package marcosec.training.collections;
 
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.not;
@@ -9,17 +9,17 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class UpperCaseConversionTest
+public class CollectionsKataTrainingTest
 {
 	@Test
 	public void shouldConvertListToUpperCase_java7()
 	{
-		UpperCaseConverter converter = new UpperCaseConverter();
+		CollectionsKataTraining training = new CollectionsKataTraining();
 
 		List<String> input = Arrays.asList("a", "ab", "aBc");
 
-		assertThat(converter.convert(input), hasItems("A", "AB", "ABC"));
-		assertThat(converter.convert(input), not(hasItems("a", "ab", "aBc")));
+		assertThat(training.convertToUpperCase(input), hasItems("A", "AB", "ABC"));
+		assertThat(training.convertToUpperCase(input), not(hasItems("a", "ab", "aBc")));
 
 	}
 }
