@@ -12,7 +12,7 @@ import org.junit.Test;
 public class CollectionsKataTrainingTest
 {
 	@Test
-	public void shouldConvertListToUpperCase_java7()
+	public void shouldConvertListToUpperCase()
 	{
 		CollectionsKataTraining training = new CollectionsKataTraining();
 
@@ -20,6 +20,18 @@ public class CollectionsKataTrainingTest
 
 		assertThat(training.convertToUpperCase(input), hasItems("A", "AB", "ABC"));
 		assertThat(training.convertToUpperCase(input), not(hasItems("a", "ab", "aBc")));
+
+	}
+
+	@Test
+	public void shouldFilterItemsLongerThan4Characters()
+	{
+		CollectionsKataTraining training = new CollectionsKataTraining();
+
+		List<String> input = Arrays.asList("verylong", "foo", "fair");
+
+		assertThat(training.filterItemsLength(input), hasItems("verylong"));
+		assertThat(training.filterItemsLength(input), not(hasItems("foo", "fair")));
 
 	}
 }
