@@ -10,14 +10,24 @@ import java.util.List;
 
 import marcosec.training.data.Person;
 import org.hamcrest.CoreMatchers;
+import org.junit.Before;
 import org.junit.Test;
 
 public class CollectionsKataTrainingTest
 {
+
+	private CollectionsKataTraining training;
+
+	@Before
+	public void setup()
+	{
+
+		training = new CollectionsKataTraining();
+	}
+
 	@Test
 	public void shouldConvertListToUpperCase()
 	{
-		CollectionsKataTraining training = new CollectionsKataTraining();
 
 		List<String> input = Arrays.asList("a", "ab", "aBc");
 
@@ -29,7 +39,6 @@ public class CollectionsKataTrainingTest
 	@Test
 	public void shouldFilterItemsLongerThan4Characters()
 	{
-		CollectionsKataTraining training = new CollectionsKataTraining();
 
 		List<String> input = Arrays.asList("verylong", "foo", "fair");
 
@@ -41,7 +50,6 @@ public class CollectionsKataTrainingTest
 	@Test
 	public void shouldFlattenACollection()
 	{
-		CollectionsKataTraining training = new CollectionsKataTraining();
 
 		List<List<String>> input = Arrays.asList(Arrays.asList("verylong"), Arrays.asList("foo", "fair"));
 
@@ -55,7 +63,6 @@ public class CollectionsKataTrainingTest
 		Person mid = new Person("Bob",10);
 		Person youngest = new Person("Charlie",2);
 
-		CollectionsKataTraining training = new CollectionsKataTraining();
 
 		List<Person> input = Arrays.asList(oldest,mid,youngest);
 
@@ -65,7 +72,6 @@ public class CollectionsKataTrainingTest
 	@Test
 	public void shouldSumItemsOfAList()
 	{
-		CollectionsKataTraining training = new CollectionsKataTraining();
 
 		List<Integer> input = Arrays.asList(10,20,30);
 
@@ -79,11 +85,24 @@ public class CollectionsKataTrainingTest
 		Person mid = new Person("Bob",10);
 		Person youngest = new Person("Charlie",2);
 
-		CollectionsKataTraining training = new CollectionsKataTraining();
 
 		List<Person> input = Arrays.asList(oldest,mid,youngest);
 
 		assertThat(training.getLegalPersonsName(input), hasItems("Bob","Charlie"));
+
+	}
+
+	@Test
+	public void shouldGetPersonsAverageAge()
+	{
+		Person oldest = new Person("Alice",40);
+		Person mid = new Person("Bob",10);
+		Person youngest = new Person("Charlie",2);
+
+
+		List<Person> input = Arrays.asList(oldest,mid,youngest);
+
+		assertThat(training.averageAge(input), equalTo(17.3));
 
 	}
 }

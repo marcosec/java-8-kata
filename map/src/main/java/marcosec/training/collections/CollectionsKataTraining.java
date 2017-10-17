@@ -4,6 +4,8 @@ import marcosec.training.data.Person;
 
 import static java.util.stream.Collectors.toList;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
 
@@ -50,5 +52,14 @@ public class CollectionsKataTraining
 				.filter(person -> person.getAge() < 18)
 				.map(Person::getName)
 				.collect(toList());
+	}
+
+	public Double averageAge(List<Person> input)
+	{
+		double average = input.stream()
+				.mapToInt(Person::getAge)
+				.summaryStatistics().getAverage();
+		BigDecimal result = new BigDecimal(average);
+		return result.setScale(1, RoundingMode.HALF_UP).doubleValue();
 	}
 }
